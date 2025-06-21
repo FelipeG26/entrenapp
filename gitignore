@@ -1,0 +1,27 @@
+# Java
+/target/
+*.class
+
+# Logs
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IntelliJ / VSCode
+.idea/
+.vscode/
+
+# OS
+*.swp
+
+# Maven
+.mvn/
+!.mvn/wrapper/maven-wrapper.jar
+
+# IDE
+*.iml
+
+# Application properties (si contiene datos sensibles)
+# application.properties
