@@ -53,4 +53,9 @@ public class EjercicioControlador {
         return ResponseEntity.ok(ejercicios);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Ejercicio> actualizar(@PathVariable Long id, @RequestBody Ejercicio ejercicio) {
+        return ResponseEntity.ok(ejercicioServicio.actualizarEjercicio(id, ejercicio));
+    }
+
 }
