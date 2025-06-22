@@ -46,4 +46,11 @@ public class EjercicioControlador {
         return ResponseEntity.ok(ejercicioServicio.obtenerPorFecha(fecha));
     }
 
+    @GetMapping("/fecha/{fecha}")
+    public ResponseEntity<List<Ejercicio>> obtenerPorFecha(@PathVariable String fecha) {
+        LocalDate fechaParseada = LocalDate.parse(fecha);
+        List<Ejercicio> ejercicios = ejercicioServicio.listarEjerciciosPorFecha(fechaParseada);
+        return ResponseEntity.ok(ejercicios);
+    }
+
 }

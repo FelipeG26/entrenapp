@@ -57,7 +57,11 @@ public class EjercicioServicio {
     }
 
     public List<Ejercicio> obtenerPorFecha(LocalDate fecha) {
-    return ejercicioRepository.findByFecha(fecha);
-}
+        return ejercicioRepository.findByFecha(fecha);
+    }
+
+    public List<Ejercicio> listarEjerciciosPorFecha(LocalDate fecha) {
+        return ejercicioRepository.findByFecha(fecha);
+    }
 
 }
