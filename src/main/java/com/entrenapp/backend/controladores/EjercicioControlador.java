@@ -37,4 +37,5 @@ public class EjercicioControlador {
         ejercicioServicio.eliminarEjercicio(id);
         return ResponseEntity.noContent().build();
     }
+
 }

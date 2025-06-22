@@ -22,10 +22,10 @@ public class Ejercicio {
     @Enumerated(EnumType.STRING)
     private TipoEjercicio tipo;
 
-    private int duracionMinutos; // duración en minutos
-
     private LocalDate fecha;
 
     private LocalTime horaInicio;
+
+    private int duracion; // duración en minutos
 
 }
