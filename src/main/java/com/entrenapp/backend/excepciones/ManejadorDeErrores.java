@@ -24,4 +24,11 @@ public class ManejadorDeErrores {
         return ResponseEntity.status(500).body(error);
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Map<String, String>> manejarIllegalArgument(IllegalArgumentException ex) {
+        Map<String, String> error = new HashMap<>();
+        error.put("mensaje", ex.getMessage());
+        return ResponseEntity.badRequest().body(error);
+    }
+
 }

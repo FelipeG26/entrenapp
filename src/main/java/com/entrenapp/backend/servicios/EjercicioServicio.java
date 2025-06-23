@@ -34,7 +34,11 @@ public class EjercicioServicio {
     }
 
     public void eliminarEjercicio(Long id) {
-        ejercicioRepository.deleteById(id);
+        Ejercicio ejercicio = obtenerPorId(id);
+        if (ejercicio == null) {
+            throw new IllegalArgumentException("El ejercicio con ID " + id + " no existe");
+        }
+        ejercicioRepository.delete(ejercicio);
     }
 
     public Ejercicio obtenerPorId(Long id) {
