@@ -87,4 +87,11 @@ public class EjercicioServicio {
         return !(finNuevo.isBefore(inicioExistente) || inicioNuevo.isAfter(finExistente));
     }
 
+    public int calcularDuracionTotalPorFecha(LocalDate fecha) {
+        List<Ejercicio> ejerciciosDelDia = ejercicioRepository.findByFecha(fecha);
+        return ejerciciosDelDia.stream()
+                .mapToInt(Ejercicio::getDuracion)
+                .sum();
+    }
+
 }

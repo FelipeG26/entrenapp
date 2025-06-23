@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -57,6 +59,16 @@ public class EjercicioControlador {
     public ResponseEntity<Ejercicio> actualizarEjercicio(@PathVariable Long id, @RequestBody Ejercicio ejercicio) {
         Ejercicio actualizado = ejercicioServicio.actualizarEjercicio(id, ejercicio);
         return ResponseEntity.ok(actualizado);
+    }
+
+    @GetMapping("/tiempo-total")
+    public ResponseEntity<Map<String, Object>> obtenerTiempoTotalPorFecha(
+            @RequestParam("fecha") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha) {
+        int totalMinutos = ejercicioServicio.calcularDuracionTotalPorFecha(fecha);
+        Map<String, Object> respuesta = new HashMap<>();
+        respuesta.put("fecha", fecha);
+        respuesta.put("totalMinutos", totalMinutos);
+        return ResponseEntity.ok(respuesta);
     }
 
 }
