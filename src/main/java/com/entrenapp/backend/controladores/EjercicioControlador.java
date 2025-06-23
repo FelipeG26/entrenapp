@@ -1,6 +1,7 @@
 package com.entrenapp.backend.controladores;
 
 import com.entrenapp.backend.entidades.Ejercicio;
+import com.entrenapp.backend.entidades.TipoEjercicio;
 import com.entrenapp.backend.servicios.EjercicioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -26,8 +27,12 @@ public class EjercicioControlador {
     }
 
     @GetMapping
-    public ResponseEntity<List<Ejercicio>> obtenerTodos() {
-        return ResponseEntity.ok(ejercicioServicio.listarEjercicios());
+    public ResponseEntity<List<Ejercicio>> obtenerEjercicios(
+            @RequestParam(value = "tipo", required = false) TipoEjercicio tipo) {
+        List<Ejercicio> ejercicios = (tipo != null)
+                ? ejercicioServicio.filtrarPorTipo(tipo)
+                : ejercicioServicio.listarTodos();
+        return ResponseEntity.ok(ejercicios);
     }
 
     @GetMapping("/{id}")

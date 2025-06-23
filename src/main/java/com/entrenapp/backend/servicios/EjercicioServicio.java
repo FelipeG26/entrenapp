@@ -1,6 +1,7 @@
 package com.entrenapp.backend.servicios;
 
 import com.entrenapp.backend.entidades.Ejercicio;
+import com.entrenapp.backend.entidades.TipoEjercicio;
 import com.entrenapp.backend.excepciones.ConflictoHorarioException;
 import com.entrenapp.backend.repositorios.EjercicioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,6 +97,14 @@ public class EjercicioServicio {
         return ejerciciosDelDia.stream()
                 .mapToInt(Ejercicio::getDuracion)
                 .sum();
+    }
+
+    public List<Ejercicio> filtrarPorTipo(TipoEjercicio tipo) {
+        return ejercicioRepository.findByTipo(tipo);
+    }
+
+    public List<Ejercicio> listarTodos() {
+        return ejercicioRepository.findAll();
     }
 
 }
