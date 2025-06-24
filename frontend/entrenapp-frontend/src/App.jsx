@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import './styles/App.css'; // Nuevo import desde la carpeta styles
 import EjercicioForm from './components/EjercicioForm';
 import EjercicioList from './components/EjercicioList';
+import DuracionTotal from './components/DuracionTotal';
 
 function App() {
   const [refrescar, setRefrescar] = useState(false);
@@ -10,10 +12,11 @@ function App() {
   };
 
   return (
-    <div style={{ padding: '2rem' }}>
+    <div>
       <h1>EntrenaApp</h1>
       <EjercicioForm onEjercicioCreado={handleEjercicioCreado} />
       <EjercicioList recargar={refrescar} />
+      <DuracionTotal />
     </div>
   );
 }

@@ -1,0 +1,44 @@
+.duracion-container {
+  margin-top: 2rem;
+  padding: 1rem;
+  border-top: 1px solid #ccc;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.duracion-container h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.duracion-container input[type="date"] {
+  padding: 0.4rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.duracion-container button {
+  margin-left: 1rem;
+  padding: 0.4rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.duracion-container button:hover {
+  background-color: #0056b3;
+}
+
+.duracion-container p {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}
+
+.duracion-container p strong {
+  color: #333;
+}

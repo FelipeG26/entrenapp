@@ -51,7 +51,7 @@ const EjercicioForm = ({ onEjercicioCreado }) => {
 
       if (onEjercicioCreado) onEjercicioCreado();
     } catch (err) {
-      alert('Error al crear ejercicio');
+      alert('Ya existe un ejercicio asginado en este horario.');
     }
   };
 
