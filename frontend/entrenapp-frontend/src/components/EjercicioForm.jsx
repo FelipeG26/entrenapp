@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const EjercicioForm = () => {
+const EjercicioForm = ({ onEjercicioCreado }) => {
   const [formData, setFormData] = useState({
     nombre: '',
-    tipo: 'FUERZA',
+    tipo: '',
     fecha: '',
     horaInicio: '',
     duracion: ''
@@ -16,11 +16,14 @@ const EjercicioForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       await axios.post('http://localhost:8080/api/ejercicios', formData);
       alert('Ejercicio creado con éxito');
-    } catch (error) {
-      console.error(error);
+      setFormData({ nombre: '', tipo: '', duracion: '', fecha: '', horaInicio: '' });
+
+      if (onEjercicioCreado) onEjercicioCreado();
+    } catch (err) {
       alert('Error al crear ejercicio');
     }
   };
