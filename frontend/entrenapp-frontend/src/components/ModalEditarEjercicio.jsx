@@ -12,9 +12,38 @@ const ModalEditarEjercicio = ({ ejercicio, onClose, onEjercicioActualizado }) =>
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // 🔒 Validaciones
+    if (!formData.nombre || formData.nombre.trim().length < 3) {
+      alert('El nombre debe tener al menos 3 caracteres');
+      return;
+    }
+
+    if (!formData.tipo) {
+      alert('Debes seleccionar un tipo de ejercicio');
+      return;
+    }
+
+    if (!formData.fecha) {
+      alert('La fecha es obligatoria');
+      return;
+    }
+
+    if (!formData.horaInicio) {
+      alert('La hora de inicio es obligatoria');
+      return;
+    }
+
+    const duracion = parseInt(formData.duracion);
+    if (isNaN(duracion) || duracion <= 10) {
+      alert('La duración debe ser mayor a 10 minutos');
+      return;
+    }
+
     try {
-      const res = await axios.put(`http://localhost:8080/api/ejercicios/${ejercicio.id}`, formData);
-      onEjercicioActualizado(res.data);
+      await axios.put(`http://localhost:8080/api/ejercicios/${ejercicio.id}`, formData);
+      alert('Ejercicio actualizado con éxito');
+      onEjercicioActualizado(formData); // ✅ Actualiza la lista
+      onClose();                        // ✅ Cierra el modal
     } catch (err) {
       alert('Error al actualizar el ejercicio');
     }
